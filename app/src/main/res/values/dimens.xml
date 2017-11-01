@@ -2,4 +2,5 @@
 <resources>
     <dimen name="fixed_height_bottom_padding">5dp</dimen>
     <dimen name="main_banner_height">100dp</dimen>
+    <dimen name="topic_divider_height">10dp</dimen>
 </resources>

@@ -2,8 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="36dp"
-    android:background="@color/white"
-    android:gravity="center_vertical">
+    android:background="@color/white">
 
     <LinearLayout
         android:id="@+id/ll"
@@ -11,12 +10,13 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
         android:gravity="center_vertical"
+        android:layout_centerVertical="true"
         android:orientation="horizontal">
 
         <ImageView
             android:layout_width="15dp"
             android:layout_height="15dp"
-            android:background="@color/colorPrimary" />
+            android:src="@mipmap/main_topic_reply"/>
 
         <TextView
             android:id="@+id/comments_tv"
@@ -34,12 +34,13 @@
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:layout_marginLeft="90dp"
+        android:layout_centerVertical="true"
         android:orientation="horizontal">
 
         <ImageView
             android:layout_width="15dp"
             android:layout_height="15dp"
-            android:background="@color/colorAccent" />
+            android:src="@mipmap/main_topic_favorite" />
 
         <TextView
             android:id="@+id/favorites_tv"
@@ -52,13 +53,12 @@
     </LinearLayout>
 
 
-    <TextView
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="15dp"
-        android:text="更多"
-        android:textColor="@color/font999"
-        android:textSize="12sp" />
+        android:padding="15dp"
+        android:layout_centerVertical="true"
+        android:src="@mipmap/main_topic_more"/>
 
 </RelativeLayout>

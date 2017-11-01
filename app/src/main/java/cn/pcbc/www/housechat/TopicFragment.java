@@ -1,14 +1,21 @@
 package cn.pcbc.www.housechat;
 
+import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageView;
+
+import com.flyco.tablayout.SlidingTabLayout;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import cn.pcbc.www.base.component.banner.RecyclerBanner;
+import cn.pcbc.www.base.component.recyclerdivider.HorizontalDividerItemDecoration;
 
 
 /**
@@ -21,14 +28,21 @@ import cn.pcbc.www.base.component.banner.RecyclerBanner;
 
 public class TopicFragment extends BaseFragment {
 
-    @BindView(R.id.topic_banner)
+    /**
+     * topicBanner
+     */
     RecyclerBanner mTopicBanner;
-
-    @BindView(R.id.topic_column)
+    /**
+     * 栏目
+     */
     RecyclerView mTopicColumnRv;
 
+    /**
+     * 话题内容
+     */
     @BindView(R.id.topic_content)
     RecyclerView mTopicContentRv;
+
 
     @Override
     protected int setLayout() {
@@ -44,21 +58,32 @@ public class TopicFragment extends BaseFragment {
      */
     String[] columnTxts = {"天气出行", "设置杂谈", "官方活动", "休闲灌水"};
 
+    /**
+     * 数据源
+     */
     List<BannerEntity> mBannerViews = new ArrayList<>();
     List<ColumnEntity> mColumnEntities = new ArrayList<>();
     List<TopicEntity> mTopics = new ArrayList<>();
 
     ColumnAdapter columnAdapter;
 
+    /**
+     * 静态工厂方初始化fragment
+     * 然后返回新的fragment到调用者
+     */
+    public static TopicFragment newInstance() {
+        TopicFragment topicFragment = new TopicFragment();
+        //参数携带...待使用
+        Bundle args = new Bundle();
+        topicFragment.setArguments(args);
+        return topicFragment;
+    }
+
     @Override
     protected void initView(View view) {
 
-        initBanner();
-
-        initColumn();
 
         initTopic();
-
     }
 
 
@@ -74,7 +99,6 @@ public class TopicFragment extends BaseFragment {
         BannerAdapter bannerAdapter = new BannerAdapter(mBannerViews);
         mTopicBanner.setPlaying(false);
         mTopicBanner.setAdapet(bannerAdapter);
-
 
     }
 
@@ -97,6 +121,18 @@ public class TopicFragment extends BaseFragment {
      * 初始化话题栏目
      */
     private void initTopic() {
+
+        //Banner 及 栏目 充当recycleview header
+        View headView = LayoutInflater.from(getContext()).inflate(R.layout.head_topic, null, false);
+        mTopicBanner = headView.findViewById(R.id.topic_banner);
+        mTopicColumnRv = headView.findViewById(R.id.topic_column);
+
+
+        initBanner();
+
+        initColumn();
+
+
         TopicEntity topic1 = new TopicEntity();
         topic1.address = "朝阳";
         topic1.content = "#知政#【财政部谈跨境电商新政：不会给消费者带来太大负担】财政部关税司有关负责人坦承，新政客观上会提高消费者总体税负水平。但其指出，在税率设置上暂给予一定优惠，具体而言有升有降。新政有利于电商化解部分成本，对大众消费品价格总体影响有限，不会给消费者带来太大负担。http://t.cn/RqXsr16";
@@ -126,7 +162,7 @@ public class TopicFragment extends BaseFragment {
         topic2.createdTime = "2017-10-30 15:35:00";
         topic2.favorited = false;
         topic2.favoriteNum = 125;
-        topic2.id = 1;
+        topic2.id = 2;
         topic2.userName = "哈利波特1";
         topic2.useravatar = "http://dwz.cn/6LkzOS";
 
@@ -152,7 +188,7 @@ public class TopicFragment extends BaseFragment {
         topic3.createdTime = "2017-10-30 15:35:00";
         topic3.favorited = false;
         topic3.favoriteNum = 125;
-        topic3.id = 1;
+        topic3.id = 3;
         topic3.userName = "哈利波特2";
         topic3.useravatar = "http://dwz.cn/6LkzOS";
 
@@ -170,7 +206,14 @@ public class TopicFragment extends BaseFragment {
 
         TopicAdapter topicAdapter = new TopicAdapter(R.layout.home_topic_original_pictext,mTopics);
         mTopicContentRv.setLayoutManager(new LinearLayoutManager(getContext()));
+        //添加headView
+        topicAdapter.addHeaderView(headView);
         mTopicContentRv.setAdapter(topicAdapter);
+        mTopicContentRv.addItemDecoration(
+                new HorizontalDividerItemDecoration.Builder(getContext())
+                        .color(getContext().getResources().getColor(R.color.divider_color))
+                        .sizeResId(R.dimen.topic_divider_height)
+                        .build());
 
     }
 }

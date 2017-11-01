@@ -5,5 +5,11 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="white">#FFFFFF</color>
+    <!--一般字体颜色-->
     <color name="font999">#999999</color>
+    <color name="font666">#666666</color>
+    <!--线条颜色-->
+    <color name="divider_color">#eaeaea</color>
+    <!--状态栏颜色-->
+    <color name="status_bg">#FFFFFF</color>
 </resources>

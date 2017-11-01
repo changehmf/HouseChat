@@ -19,17 +19,9 @@
         android:id="@+id/main_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:visibility="gone"
+        android:visibility="visible"
         android:layout_above="@id/bottom_navigation_bar">
-
     </FrameLayout>
 
-    <fragment
-        android:id="@+id/fragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@id/bottom_navigation_bar"
-        android:name="cn.pcbc.www.housechat.TopicFragment"/>
 
 </RelativeLayout>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="42dp"
+    xmlns:tl="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white">
+
+    <ImageView
+        android:id="@+id/tool_chat"
+        android:layout_width="20dp"
+        android:layout_height="23dp"
+        android:layout_marginLeft="15dp"
+        android:layout_centerVertical="true"
+        android:src="@mipmap/main_chat"/>
+
+
+    <ImageView
+        android:id="@+id/tool_search"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="15dp"
+        android:src="@mipmap/main_search" />
+
+
+    <com.flyco.tablayout.SlidingTabLayout
+        android:id="@+id/sliding_tab"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        tl:tl_textsize="16sp"
+        tl:tl_indicator_color="@color/colorPrimary"
+        tl:tl_indicator_height="3dp"
+        tl:tl_textSelectColor="@color/colorPrimary"
+        tl:tl_textUnselectColor="@color/font999"
+        tl:tl_indicator_width="45dp"/>
+
+
+</RelativeLayout>
