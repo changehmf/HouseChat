@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <Button
+        android:id="@+id/toolbar_left_btn"
+        android:layout_width="@dimen/com_toolbar_image_size"
+        android:layout_height="@dimen/com_toolbar_image_size"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="20dp"
+        android:background="@null"
+        android:textSize="14sp"
+        tools:background="@color/colorPrimary" />
+
+
+    <Button
+        android:id="@+id/toolbar_right_btn"
+        android:layout_width="@dimen/com_toolbar_image_size"
+        android:layout_height="@dimen/com_toolbar_image_size"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="20dp"
+        android:background="@null"
+        android:textSize="14sp"
+        tools:background="@color/colorPrimary" />
+
+    <TextView
+        android:id="@+id/toolbar_title_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textColor="@color/font666"
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="60dp"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        tools:text="社区服务" />
+
+
+</merge>
