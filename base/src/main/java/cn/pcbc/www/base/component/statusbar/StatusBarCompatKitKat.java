@@ -1,4 +1,4 @@
-package cn.pcbc.www.base.component.StatusBar;
+package cn.pcbc.www.base.component.statusbar;
 
 import android.annotation.TargetApi;
 import android.app.Activity;

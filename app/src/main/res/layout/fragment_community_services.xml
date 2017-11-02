@@ -14,7 +14,8 @@
         app:left_button_visible="false"
         app:title_text="社区服务"
         app:right_button_visible="true"
-        app:right_button_drawable="@mipmap/main_search"/>
+        app:right_button_drawable="@mipmap/main_search"
+        app:title_text_color="#4a4a4a"/>
 
 
     <android.support.v7.widget.RecyclerView

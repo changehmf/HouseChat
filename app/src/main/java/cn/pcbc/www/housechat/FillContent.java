@@ -26,6 +26,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import cn.pcbc.www.base.utils.DateUtils;
 import cn.pcbc.www.base.utils.TimeUtils;
@@ -124,21 +125,42 @@ public class FillContent {
         }
     }
 
-    public static void fillWeiBoImgList(ArrayList<String> imageDatas, Context context, RecyclerView recyclerview) {
-        if (imageDatas == null || imageDatas.size() == 0) {
-            recyclerview.setVisibility(View.GONE);
+//    public static void fillWeiBoImgList(ArrayList<String> imageDatas, Context context, RecyclerView recyclerview) {
+//        if (imageDatas == null || imageDatas.size() == 0) {
+//            recyclerview.setVisibility(View.GONE);
+//            return;
+//        }
+//        if (recyclerview.getVisibility() == View.GONE) {
+//            recyclerview.setVisibility(View.VISIBLE);
+//        }
+//        GridLayoutManager gridLayoutManager = initGridLayoutManager(imageDatas, context);
+//        ImageAdapter imageAdapter = new ImageAdapter(imageDatas, context);
+//        recyclerview.setHasFixedSize(true);
+//        recyclerview.setAdapter(imageAdapter);
+//        recyclerview.setLayoutManager(gridLayoutManager);
+//        imageAdapter.setData(imageDatas);
+//        imageAdapter.notifyDataSetChanged();
+//    }
+
+    /**
+     * 填充9宫格图片 未考虑gif 长图 图片下标
+     * @param imageDatas
+     * @param nineGridView
+     */
+    public static void fillNineImages(List<String> imageDatas, NineGridView nineGridView){
+
+        if(imageDatas == null || imageDatas.size() == 0){
+            nineGridView.setVisibility(View.GONE);
             return;
         }
-        if (recyclerview.getVisibility() == View.GONE) {
-            recyclerview.setVisibility(View.VISIBLE);
+
+        if(nineGridView.getVisibility() == View.GONE){
+            nineGridView.setVisibility(View.VISIBLE);
         }
-        GridLayoutManager gridLayoutManager = initGridLayoutManager(imageDatas, context);
-        ImageAdapter imageAdapter = new ImageAdapter(imageDatas, context);
-        recyclerview.setHasFixedSize(true);
-        recyclerview.setAdapter(imageAdapter);
-        recyclerview.setLayoutManager(gridLayoutManager);
-        imageAdapter.setData(imageDatas);
-        imageAdapter.notifyDataSetChanged();
+
+        nineGridView.setIsShowAll(false);
+        nineGridView.setUrlList(imageDatas);
+
     }
 
 

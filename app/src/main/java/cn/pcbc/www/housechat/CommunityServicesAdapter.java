@@ -1,6 +1,9 @@
 package cn.pcbc.www.housechat;
 
 
+import android.widget.ImageView;
+
+import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseSectionQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 
@@ -10,7 +13,7 @@ import java.util.List;
  * Name: CommunityServicesAdapter
  *
  * @author: HMF
- * Comment: //TODO
+ * Comment:
  * @date: 2017/11/01
  */
 
@@ -24,6 +27,7 @@ public class CommunityServicesAdapter extends BaseSectionQuickAdapter<ServicesSe
     protected void convert(BaseViewHolder helper, ServicesSectionEntity item) {
         ServicesEntity t = item.t;
         helper.setText(R.id.column_tv,t.name);
+        Glide.with(mContext).load(t.img).into((ImageView) helper.getView(R.id.column_iv));
 
 
     }

@@ -1,5 +1,7 @@
 package cn.pcbc.www.housechat;
 
+import android.support.annotation.DrawableRes;
+
 /**
  * Name: ServicesEntity
  *
@@ -10,10 +12,10 @@ package cn.pcbc.www.housechat;
 
 public class ServicesEntity {
 
-    public String img;
+    public int img;
     public String name;
 
-    public ServicesEntity(String img, String name) {
+    public ServicesEntity(@DrawableRes int img, String name) {
         this.img = img;
         this.name = name;
     }

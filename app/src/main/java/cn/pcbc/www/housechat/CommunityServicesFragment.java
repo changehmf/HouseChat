@@ -69,30 +69,27 @@ public class CommunityServicesFragment extends BaseFragment {
      */
     private void initData() {
         mServices.add(new ServicesSectionEntity(true, "业主"));
-        mServices.add(new ServicesSectionEntity(new ServicesEntity(null, "反馈建议")));
-        mServices.add(new ServicesSectionEntity(new ServicesEntity(null, "保修")));
-        mServices.add(new ServicesSectionEntity(new ServicesEntity(null, "物业评价")));
-        mServices.add(new ServicesSectionEntity(new ServicesEntity(null, "开发商评价")));
+        mServices.add(new ServicesSectionEntity(new ServicesEntity(R.mipmap.service_feedback, "反馈建议")));
+        mServices.add(new ServicesSectionEntity(new ServicesEntity(R.mipmap.service_repair, "保修")));
+        mServices.add(new ServicesSectionEntity(new ServicesEntity(R.mipmap.service_evaluate, "物业评价")));
+        mServices.add(new ServicesSectionEntity(new ServicesEntity(R.mipmap.service_developer, "开发商评价")));
 
         mServices.add(new ServicesSectionEntity(true, "物业"));
-        mServices.add(new ServicesSectionEntity(new ServicesEntity(null, "缴费")));
-        mServices.add(new ServicesSectionEntity(new ServicesEntity(null, "维修")));
-        mServices.add(new ServicesSectionEntity(new ServicesEntity(null, "通知公告")));
+        mServices.add(new ServicesSectionEntity(new ServicesEntity(R.mipmap.service_pay, "缴费")));
+        mServices.add(new ServicesSectionEntity(new ServicesEntity(R.mipmap.service_fix, "维修")));
+        mServices.add(new ServicesSectionEntity(new ServicesEntity(R.mipmap.service_inform, "通知公告")));
 
         mServices.add(new ServicesSectionEntity(true, "居家"));
-        mServices.add(new ServicesSectionEntity(new ServicesEntity(null, "家电维修")));
-        mServices.add(new ServicesSectionEntity(new ServicesEntity(null, "家政保洁")));
-        mServices.add(new ServicesSectionEntity(new ServicesEntity(null, "快递")));
-        mServices.add(new ServicesSectionEntity(new ServicesEntity(null, "装修")));
-        mServices.add(new ServicesSectionEntity(new ServicesEntity(null, "小商家")));
+        mServices.add(new ServicesSectionEntity(new ServicesEntity(R.mipmap.service_home_appliances, "家电维修")));
+        mServices.add(new ServicesSectionEntity(new ServicesEntity(R.mipmap.service_clean, "家政保洁")));
+        mServices.add(new ServicesSectionEntity(new ServicesEntity(R.mipmap.service_express, "快递")));
+        mServices.add(new ServicesSectionEntity(new ServicesEntity(R.mipmap.service_decoration, "装修")));
+        mServices.add(new ServicesSectionEntity(new ServicesEntity(R.mipmap.service_shop, "小商家")));
 
 
         servicesAdapter = new CommunityServicesAdapter(R.layout.item_services, R.layout.head_community_services, mServices);
         mCommunityRv.setLayoutManager(new GridLayoutManager(getContext(), 4));
         mCommunityRv.setAdapter(servicesAdapter);
-//        mCommunityRv.addItemDecoration(new HorizontalDividerItemDecoration.Builder(getContext())
-//                .colorResId(R.color.divider_color)
-//                .sizeResId(R.dimen.topic_divider_height)
-//                .build());
+
     }
 }

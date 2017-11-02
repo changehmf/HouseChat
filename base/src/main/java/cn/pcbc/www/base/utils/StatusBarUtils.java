@@ -16,7 +16,7 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import cn.pcbc.www.base.component.StatusBar.StatusBarCompat;
+import cn.pcbc.www.base.component.statusbar.StatusBarCompat;
 
 /**
  * 状态栏工具类

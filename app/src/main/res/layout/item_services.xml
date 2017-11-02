@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="90dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="95dp"
     android:gravity="center"
     android:background="@color/white">
 
     <ImageView
         android:id="@+id/column_iv"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:src="@mipmap/weather_icon"/>
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        tools:src="@mipmap/weather_icon"/>
 
     <TextView
         android:id="@+id/column_tv"
@@ -17,7 +19,7 @@
         android:layout_height="wrap_content"
         android:text="天气出行"
         android:layout_marginTop="8dp"
-        android:textSize="13sp"
+        android:textSize="14sp"
         android:textColor="@color/font666"/>
 
 

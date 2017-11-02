@@ -35,7 +35,8 @@ public class TopicAdapter extends BaseQuickAdapter<TopicEntity, BaseViewHolder> 
         FillContent.setWeiBoTime(mContext, (TextView) helper.getView(R.id.profile_time_tv), item.createdTime);
         Glide.with(mContext).load(item.useravatar).into((ImageView) helper.getView(R.id.profile_iv));
         FillContent.fillWeiBoContent(item.content, mContext, (TextView) helper.getView(R.id.topic_Content));
-        FillContent.fillWeiBoImgList(item.imgs,mContext, (RecyclerView) helper.getView(R.id.topic_image));
+//        FillContent.fillWeiBoImgList(item.imgs,mContext, (RecyclerView) helper.getView(R.id.topic_image));
+        FillContent.fillNineImages(item.imgs,(NineGridView) helper.getView(R.id.topic_image));
     }
 
 }

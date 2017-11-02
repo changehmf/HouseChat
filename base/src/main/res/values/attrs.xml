@@ -15,4 +15,13 @@
         </attr>
         <attr name="rvb_autoPlaying" format="boolean" />
     </declare-styleable>
+
+    <declare-styleable name="NineGridLayout">
+        <attr name="sapcing" format="dimension"/>
+    </declare-styleable>
+
+    <declare-styleable name="RatioImageView">
+        <attr name="ratio" format="float"/>
+    </declare-styleable>
+
 </resources>

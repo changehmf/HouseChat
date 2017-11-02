@@ -176,6 +176,10 @@ public class TopicFragment extends BaseFragment {
         temp2.add("http://dwz.cn/6LkGDn");
         temp2.add("http://dwz.cn/6LkGNS");
         temp2.add("http://dwz.cn/6LkHoA");
+        temp2.add("http://dwz.cn/6LkFVj");
+        temp2.add("http://dwz.cn/6LkGDn");
+        temp2.add("http://dwz.cn/6LkGNS");
+        temp2.add("http://dwz.cn/6LkHoA");
 
         topic2.imgs = new ArrayList<>();
         topic2.imgs.addAll(temp2);
@@ -193,7 +197,8 @@ public class TopicFragment extends BaseFragment {
         topic3.useravatar = "http://dwz.cn/6LkzOS";
 
         ArrayList<String> temp3 = new ArrayList<>();
-        temp3.add("http://dwz.cn/6LkFoR");
+//        temp3.add("http://b.hiphotos.baidu.com/image/pic/item/cc11728b4710b9128942bd3ecafdfc039345226a.jpg");
+        temp3.add("http://d.hiphotos.baidu.com/image/pic/item/f603918fa0ec08fa4a102d4353ee3d6d54fbdac5.jpg");
 
 
         topic3.imgs = new ArrayList<>();
