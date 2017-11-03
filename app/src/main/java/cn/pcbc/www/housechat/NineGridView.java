@@ -88,5 +88,6 @@ public class NineGridView extends NineGridLayout {
     @Override
     protected void onClickImage(int position, String url, ArrayList<String> urlList,View view) {
            PhotoBrowseActivity.startWithElement((Activity) mContext,urlList,position,view);
+//           PhotoBrowseActivity1.startPhotoBrowse(mContext,urlList,position);
     }
 }

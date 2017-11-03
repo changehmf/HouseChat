@@ -66,4 +66,6 @@ public class HomeFragment extends BaseFragment {
         mSlidingTab.setViewPager(mHomeVp,mTitles,getActivity(),mFragments);
 
     }
+
+
 }

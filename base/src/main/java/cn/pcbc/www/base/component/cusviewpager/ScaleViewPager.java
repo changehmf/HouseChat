@@ -30,7 +30,6 @@ public class ScaleViewPager extends BaseAnimCloseViewPager {
     float mDownX;
     float mDownY;
 
-
     public ScaleViewPager(Context context) {
         super(context);
     }
@@ -50,6 +49,7 @@ public class ScaleViewPager extends BaseAnimCloseViewPager {
                 mDownY = ev.getRawY();
                 addIntoVelocity(ev);
                 break;
+
             case MotionEvent.ACTION_MOVE:
                 addIntoVelocity(ev);
                 int deltaY = (int) (ev.getRawY() - mDownY);
@@ -60,6 +60,7 @@ public class ScaleViewPager extends BaseAnimCloseViewPager {
                     setupMoving(ev.getRawX(),ev.getRawY());
                     return true;
                 }
+
                 break;
             case MotionEvent.ACTION_UP:
             case MotionEvent.ACTION_CANCEL:

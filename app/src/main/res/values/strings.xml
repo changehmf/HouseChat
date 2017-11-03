@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">HouseChat</string>
+    <string name="photo_num">%d/%d</string>
 </resources>

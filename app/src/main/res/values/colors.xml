@@ -12,4 +12,5 @@
     <color name="divider_color">#eaeaea</color>
     <!--状态栏颜色-->
     <color name="status_bg">#FFFFFF</color>
+    <color name="black">#000</color>
 </resources>

@@ -10,6 +10,7 @@ import android.support.v4.app.SharedElementCallback;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,13 +24,14 @@ import java.util.List;
 import java.util.Map;
 
 import cn.pcbc.www.base.component.cusviewpager.BaseAnimCloseViewPager;
+import cn.pcbc.www.base.utils.LogUtil;
 
 
 /**
  * @author
  * @date 2017/11/2
  */
-public class PhotoBrowseActivity extends BaseActivity {
+public class PhotoBrowseActivity extends AppCompatActivity {
 
 
     private int firstDisplayImageIndex = 0;
@@ -61,13 +63,12 @@ public class PhotoBrowseActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        setContentView(R.layout.activity_photo_browse);
+
         initView();
     }
 
-    @Override
-    protected int setLayout() {
-        return R.layout.activity_photo_browse;
-    }
 
     public void initView() {
         pictureList = getIntent().getStringArrayListExtra("urls");
@@ -89,7 +90,10 @@ public class PhotoBrowseActivity extends BaseActivity {
                 sharedElements.put("tansition_view", sharedView);
             }
         });
+
     }
+
+
 
     private void setViewPagerAdapter() {
         adapter = new PagerAdapter() {
@@ -136,7 +140,7 @@ public class PhotoBrowseActivity extends BaseActivity {
         };
 
         imageViewPager.setAdapter(adapter);
-        imageViewPager.setOffscreenPageLimit(1);
+        imageViewPager.setOffscreenPageLimit(3);
         imageViewPager.setCurrentItem(firstDisplayImageIndex);
         imageViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -165,11 +169,13 @@ public class PhotoBrowseActivity extends BaseActivity {
 
             @Override
             public void onPictureClick() {
+                LogUtil.e("点击了图片");
                 finishAfterTransition();
             }
 
             @Override
             public void onPictureRelease(View view) {
+                LogUtil.e("释放了图片");
                 finishAfterTransition();
             }
         });
@@ -184,9 +190,10 @@ public class PhotoBrowseActivity extends BaseActivity {
     };
 
 
-    private void onViewPagerSelected(int position) {
+    private void onViewPagerSelected(final int position) {
         updateCurrentImageView(position);
         setImageView(pictureList.get(position));
+
     }
 
 

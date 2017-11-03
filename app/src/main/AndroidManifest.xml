@@ -24,6 +24,7 @@
 
         <activity android:name=".PhotoBrowseActivity"
             android:theme="@style/FullScreenStyle"/>
+        <activity android:name=".PhotoBrowseActivity1" />
     </application>
 
 </manifest>

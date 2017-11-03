@@ -27,7 +27,7 @@ public class TopicAdapter extends BaseQuickAdapter<TopicEntity, BaseViewHolder> 
 
     @Override
     protected void convert(BaseViewHolder helper, TopicEntity item) {
-        //是指额名称 地址 评论数 喜欢数
+        //设置名称 地址 评论数 喜欢数
         helper.setText(R.id.profile_name_tv, item.userName)
                 .setText(R.id.from_tv, item.address)
                 .setText(R.id.favorites_tv, item.favoriteNum+"")
@@ -35,8 +35,9 @@ public class TopicAdapter extends BaseQuickAdapter<TopicEntity, BaseViewHolder> 
         FillContent.setWeiBoTime(mContext, (TextView) helper.getView(R.id.profile_time_tv), item.createdTime);
         Glide.with(mContext).load(item.useravatar).into((ImageView) helper.getView(R.id.profile_iv));
         FillContent.fillWeiBoContent(item.content, mContext, (TextView) helper.getView(R.id.topic_Content));
-//        FillContent.fillWeiBoImgList(item.imgs,mContext, (RecyclerView) helper.getView(R.id.topic_image));
         FillContent.fillNineImages(item.imgs,(NineGridView) helper.getView(R.id.topic_image));
+
+
     }
 
 }

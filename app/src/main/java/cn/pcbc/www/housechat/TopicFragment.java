@@ -1,21 +1,30 @@
 package cn.pcbc.www.housechat;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.SharedElementCallback;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.listener.SimpleClickListener;
 import com.flyco.tablayout.SlidingTabLayout;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import cn.pcbc.www.base.component.banner.RecyclerBanner;
 import cn.pcbc.www.base.component.recyclerdivider.HorizontalDividerItemDecoration;
+import cn.pcbc.www.base.utils.LogUtil;
 
 
 /**
@@ -66,6 +75,10 @@ public class TopicFragment extends BaseFragment {
     List<TopicEntity> mTopics = new ArrayList<>();
 
     ColumnAdapter columnAdapter;
+
+    private Bundle mReenterState;
+
+    NineGridView nineGridView;
 
     /**
      * 静态工厂方初始化fragment
@@ -167,15 +180,15 @@ public class TopicFragment extends BaseFragment {
         topic2.useravatar = "http://dwz.cn/6LkzOS";
 
         ArrayList<String> temp2 = new ArrayList<>();
-        temp2.add("http://dwz.cn/6LkFoR");
-        temp2.add("http://dwz.cn/6LkFVj");
-        temp2.add("http://dwz.cn/6LkGDn");
-        temp2.add("http://dwz.cn/6LkGNS");
-        temp2.add("http://dwz.cn/6LkHoA");
-        temp2.add("http://dwz.cn/6LkFVj");
-        temp2.add("http://dwz.cn/6LkGDn");
-        temp2.add("http://dwz.cn/6LkGNS");
-        temp2.add("http://dwz.cn/6LkHoA");
+        temp2.add("https://wx4.sinaimg.cn/mw690/61ecce97ly1fiymkfehrkj20hs0vkk0n.jpg");
+        temp2.add("https://wx3.sinaimg.cn/mw690/61ecce97ly1fiymkjpi6cj20hs0vk497.jpg");
+        temp2.add("https://wx3.sinaimg.cn/mw690/61ecce97ly1fiymkn1ih1j20hs0vk11k.jpg");
+        temp2.add("https://wx2.sinaimg.cn/mw690/61ecce97ly1fiymkr3gaxj20hs0vkgtu.jpg");
+        temp2.add("https://wx1.sinaimg.cn/mw690/61ecce97ly1fiymkvpal3j20hs0vktob.jpg");
+        temp2.add("https://wx1.sinaimg.cn/mw690/61ecce97ly1fiymlfryuaj20hs0vk47g.jpg");
+        temp2.add("https://wx2.sinaimg.cn/mw690/61ecce97ly1fiymljaebbj20hs0vkdoe.jpg");
+        temp2.add("https://wx4.sinaimg.cn/mw690/61ecce97ly1fiymlmboxfj20hs0vkn6z.jpg");
+        temp2.add("https://wx3.sinaimg.cn/mw690/61ecce97ly1fiymlrx59fj20hs0vk7d5.jpg");
         temp2.add("http://dwz.cn/6LkFVj");
         temp2.add("http://dwz.cn/6LkGDn");
         temp2.add("http://dwz.cn/6LkGNS");
@@ -209,7 +222,7 @@ public class TopicFragment extends BaseFragment {
         mTopics.add(topic2);
         mTopics.add(topic3);
 
-        TopicAdapter topicAdapter = new TopicAdapter(R.layout.home_topic_original_pictext,mTopics);
+        TopicAdapter topicAdapter = new TopicAdapter(R.layout.home_topic_original_pictext, mTopics);
         mTopicContentRv.setLayoutManager(new LinearLayoutManager(getContext()));
         //添加headView
         topicAdapter.addHeaderView(headView);
@@ -220,5 +233,56 @@ public class TopicFragment extends BaseFragment {
                         .sizeResId(R.dimen.topic_divider_height)
                         .build());
 
+        setSharedElementCallback(getActivity());
+
+        //todo viewpager滑动导致共享元素的变动 返回时候共享元素切换体验不好
+        mTopicContentRv.addOnItemTouchListener(new SimpleClickListener() {
+            @Override
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                LogUtil.e("onItemClick：" + position);
+                nineGridView = view.findViewById(R.id.topic_image);
+            }
+
+            @Override
+            public void onItemLongClick(BaseQuickAdapter adapter, View view, int position) {
+                LogUtil.e("onItemLongClick：" + position);
+            }
+
+            @Override
+            public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+                LogUtil.e("onItemChildClick：" + position);
+            }
+
+            @Override
+            public void onItemChildLongClick(BaseQuickAdapter adapter, View view, int position) {
+                LogUtil.e("onItemChildLongClick：" + position);
+            }
+        });
+    }
+
+    /**
+     * 接管Activity的setExitSharedElementCallback
+     *
+     * @param activity
+     */
+    public void setSharedElementCallback(Activity activity) {
+        ActivityCompat.setExitSharedElementCallback(activity, new SharedElementCallback() {
+            @Override
+            public void onMapSharedElements(List<String> names, Map<String, View> sharedElements) {
+                if (mReenterState != null && nineGridView != null) {
+                    int index = mReenterState.getInt("index", 0);
+                    LogUtil.e("退出坐标:" + index);
+                    sharedElements.clear();
+                    sharedElements.put("tansition_view", nineGridView.getChildAt(index));
+                    mReenterState = null;
+                }
+            }
+        });
+
+    }
+
+    //    监听activity过渡退出
+    public void onReenter(Intent data) {
+        mReenterState = new Bundle(data.getExtras());
     }
 }

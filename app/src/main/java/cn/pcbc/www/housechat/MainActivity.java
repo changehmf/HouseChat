@@ -1,5 +1,6 @@
 package cn.pcbc.www.housechat;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -263,6 +264,15 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
         }
         if (mCommunityFragment != null) {
             transaction.hide(mCommunityFragment);
+        }
+    }
+
+    @Override
+    public void onActivityReenter(int resultCode, Intent data) {
+        super.onActivityReenter(resultCode, data);
+        TopicFragment fragment = (TopicFragment) getSupportFragmentManager().findFragmentByTag("android:switcher:" + R.id.home_vp + ":0");
+        if (fragment != null) {
+            fragment.onReenter(data);
         }
     }
 

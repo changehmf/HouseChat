@@ -21,7 +21,6 @@ public class BaseAnimCloseViewPager extends ViewPager {
     public interface IAnimClose {
         boolean canDrag();
         void onPictureClick();
-
         void onPictureRelease(View view);
     }
 
